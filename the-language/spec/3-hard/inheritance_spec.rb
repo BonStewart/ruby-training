@@ -22,34 +22,34 @@ RSpec.describe 'Inheritance' do
   end
 
   it 'sets the subclasses parent as one of the ancestors' do
-    expect(Chihuahua.ancestors.include?(DogBase)).to eq(__)
+    expect(Chihuahua.ancestors.include?(DogBase)).to eq(true)
   end
 
   it 'will ultimately inherit from Object' do
-    expect(Chihuahua.ancestors.include?(Object)).to eq(__)
+    expect(Chihuahua.ancestors.include?(Object)).to eq(true)
   end
 
   it 'inherits behaviour from the parent class' do
     chico = Chihuahua.new('Chico')
-    expect(chico.name).to eq(__)
+    expect(chico.name).to eq('Chico')
   end
 
   it 'can add behaviour in a subclass that does not exist in the parent class' do
     chico = Chihuahua.new('Chico')
-    expect(chico.wag).to eq(__)
+    expect(chico.wag).to eq(:happy)
 
     expect do
       fido = DogBase.new('Fido')
       fido.wag
-    end.to raise_error(__)
+    end.to raise_error(NoMethodError)
   end
 
   it 'can modify behaviour in a subclass' do
     chico = Chihuahua.new('Chico')
-    expect(chico.bark).to eq(__)
+    expect(chico.bark).to eq('yip')
 
     fido = DogBase.new('Fido')
-    expect(fido.bark).to eq(__)
+    expect(fido.bark).to eq('woof')
   end
 
   class BullDog < DogBase
@@ -60,7 +60,7 @@ RSpec.describe 'Inheritance' do
 
   it 'can invoke the parent method behaviour using super' do
     ralph = BullDog.new('Ralph')
-    expect(ralph.bark).to eq(__)
+    expect(ralph.bark).to eq('WOOF')
   end
 
   class GreatDane < DogBase
@@ -71,6 +71,6 @@ RSpec.describe 'Inheritance' do
 
   it 'is not able to use super to invoke different methods' do
     george = GreatDane.new('George')
-    expect { george.growl }.to raise_error(__)
+    expect { george.growl }.to raise_error(NoMethodError)
   end
 end
