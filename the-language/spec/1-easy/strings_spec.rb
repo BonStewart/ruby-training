@@ -127,64 +127,64 @@ Humpty dumpty had a great fall
     count = 99
     string = "#{(count - 1) / 2} bottles of beer on the wall."
 
-    expect(string).to eq("49 bottles of beer on the wall."__)
+    expect(string).to eq("49 bottles of beer on the wall.")
   end
 
   it 'can extract a substring' do
     string = 'Bacon, lettuce and tomato'
 
-    expect(string[7, 3]).to eq(__)
-    expect(string[7..9]).to eq(__)
+    expect(string[7, 3]).to eq('let')
+    expect(string[7..9]).to eq('let')
   end
 
   it 'can extract a single character' do
     string = 'Bacon, lettuce and tomato'
-    expect(string[1]).to eq(__)
+    expect(string[1]).to eq('a')
   end
 
   it 'can split a string into individual characters' do
     string = 'Bacon, lettuce and tomato'
 
-    expect(string.chars).to eq(__)
+    expect(string.chars).to eq(["B", "a", "c", "o", "n", ",", " ","l", "e", "t", "t", "u", "c", "e", " ","a", "n", "d", " ","t", "o", "m", "a", "t", "o"])
   end
 
   it 'represents single characters as strings' do
     # This single char representation isn't used in practice
-    expect(?a).to eq(__)
-    expect(?a == 97).to eq(__)
+    expect(?a).to eq('a')
+    expect(?a == 97).to eq(false)
   end
 
   it 'can split a string' do
     string = 'Strings Are Fun'
     words = string.split
 
-    expect(words).to eq(__)
+    expect(words).to eq(["Strings", "Are", "Fun"])
   end
 
   it 'can split a string on a different character' do
     string = 'has:many:through'
     words = string.split(':')
 
-    expect(words).to eq(__)
+    expect(words).to eq(["has", "many", "through"])
   end
 
   it 'can join strings' do
     words = ['Welcome', 'to', 'the', 'joinery']
     string = words.join(' ')
 
-    expect(string).to eq(__)
+    expect(string).to eq("Welcome to the joinery")
   end
 
   it 'is a unique object' do
     a = 'Hello, world!'
     b = 'Hello, world!'
 
-    expect(a == b).to eq(__)
+    expect(a == b).to eq(true)
     puts a.object_id
     puts b.object_id
 
     # What does the above 2 commands show you in the console?
     # Why do you think this is the case, have a quick think / google
-    expect(a.object_id == b.object_id).to eq(__)
+    expect(a.object_id == b.object_id).to eq(false)
   end
 end
