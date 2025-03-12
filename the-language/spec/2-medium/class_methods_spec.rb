@@ -24,13 +24,13 @@ RSpec.describe 'Class methods' do
     expect(Cat.methods.size > 1).to be true
   end
 
-  xit 'is possible to define a method on an individual object' do
+  it 'is possible to define a method on an individual object' do
     # NB: Do not do this, a single instance should not be unique in terms of behaviour!
     percy = Cat.new
     def percy.wag
       :percys_wag
     end
-    expect(percy.wag).to eq(__)
+    expect(percy.wag).to eq(:percys_wag)
   end
 
   it 'does not affect other objects (instances), when defining singleton methods' do
